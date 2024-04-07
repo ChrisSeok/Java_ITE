@@ -1,4 +1,4 @@
-package Example;
+package exec_sequence;
 
 public class Exam01_InheritanceOrder extends SuperClass {
 	int c = staticCall("6");
@@ -14,7 +14,7 @@ public class Exam01_InheritanceOrder extends SuperClass {
 	}
 	public static void main(String[] args) {
 		System.out.println("10");
-		//자식 or 부모 어떤 생성자 호출?
+		//자식 or 부모 어떤 생성자 호출? > 자식.
 		SuperClass obj = new Exam01_InheritanceOrder(); // 객체는 outer(자식), 타입은 inner(부모) > outer에만 있는 요소는 사용x 
 		obj.myFunc();
 	}

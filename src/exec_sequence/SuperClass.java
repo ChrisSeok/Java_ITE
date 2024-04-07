@@ -1,4 +1,4 @@
-package Example;
+package exec_sequence;
 
 public class SuperClass {
 	static int staticCall(String msg) {
@@ -10,6 +10,7 @@ public class SuperClass {
 	
 	public SuperClass() {
 //		super(); 가 생략되어있음
+		//라인 실행 전에 인스턴스(필드 등) 초기화
 		staticCall("3");
 	}
 	public SuperClass(int i) {
