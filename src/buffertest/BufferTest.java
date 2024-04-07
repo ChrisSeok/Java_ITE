@@ -41,8 +41,7 @@ public class BufferTest {
 //            System.out.println(number);
 //        }
 //				
-	// pull test;	
-		// pull test2;
+
 
 	}
 }
