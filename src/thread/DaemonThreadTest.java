@@ -49,7 +49,7 @@ public class DaemonThreadTest implements Runnable{
 			}
 			
 			if(autoSave){
-				System.out.println("자동저장 되었어요!");
+				System.out.println("자동저장 되었어요!!!!");
 			}
 		}
 	}
