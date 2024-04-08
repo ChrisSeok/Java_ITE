@@ -14,6 +14,6 @@ public class Test02 {
 		StringTokenizer st = new StringTokenizer(bf.readLine());
 		String line = st.nextToken();
 		System.out.println(line);
-		
+		System.out.println("hihihi");
 	}
 }
