@@ -6,8 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class EchoServer extends Application {
-
+public class EchoClient extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         // 화면 구성 역할
@@ -15,7 +14,7 @@ public class EchoServer extends Application {
         Parent root = null;
         
         FXMLLoader loader = new FXMLLoader( // fxml 파일을 불러들이는 것
-                getClass().getResource("echoServer.fxml")
+                getClass().getResource("echoClient.fxml")
         );
         
         
@@ -36,4 +35,5 @@ public class EchoServer extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 }

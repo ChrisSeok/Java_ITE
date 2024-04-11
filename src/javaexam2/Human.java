@@ -5,9 +5,11 @@ public class Human {
 	int age;
 	int height;
 	int weight;
+	
+	
 	Human(){
-		
 	}
+	
 	Human(String name,int age, int height, int weight){
 		this.name = name;
 		this.age = age;
