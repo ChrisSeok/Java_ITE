@@ -58,8 +58,7 @@ public class EchoServerController implements Initializable{
 	@FXML private TextArea messageBox;
 
 	private void printMsg(String msg) { 
-		Platform.runLater(()-> { //바로바로 실행이 안되기 때문에 원하는 시점에 내용을 출력하려면 스레드를 별도로 만든다.
-			// Runnable 객체 축약
+		Platform.runLater(()-> { //바로바로 실행이 안되기 때문에 원하는 시점에 내용을 출력하려면 스레드를 별도로 만든다. // Runnable 객체 축약
 			messageBox.appendText(msg + "\n");
 		});
 	}
