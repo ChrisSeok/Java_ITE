@@ -15,25 +15,28 @@ public class Main extends Application{
 	    public void start(Stage primaryStage) throws Exception {
 	        // 화면 구성 역할
 	        // fxml 파일을 이용해서 Pane을 가져와서 Scene을 만들고 Stage에 붙여서 사용
-	        Parent root = null;
 	        
-	        FXMLLoader loader = new FXMLLoader( // fxml 파일을 불러들이는 것
-	                getClass().getResource("bookfx.fxml")
+	    	//이 부분은 항상 똑같다
+	    	Parent root = null;
+	        
+	        FXMLLoader loader = new FXMLLoader( // fxml 파일을 불러들임
+	                getClass().getResource("JavaFXBookSearchTableView.fxml")
 	        );
-	        
 	        
 	        try {
 	            root = loader.load();
-	        }catch (Exception e){
+	        }
+	        catch (Exception e){
 	        	System.out.println("Main에서 bookfx.fxml 로딩에서 문제가 생겼어용");
 //	            System.err.println(e);
 	        }
 	        
 	        
-	        Scene scene = new Scene(root);
+	        Scene scene = new Scene(root); //Scene을 만들고
 
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
+	        primaryStage.setScene(scene); //Stage에 Scene을 붙여서
+	        
+	        primaryStage.show(); // show해서 올린다.
 	    }
 	    
 	    
