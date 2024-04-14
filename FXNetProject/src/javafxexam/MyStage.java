@@ -27,5 +27,6 @@ public class MyStage extends Stage {
 
 		// 이 Scene을 Stage에 부착!
 		this.setScene(scene);
+		sysout
 	}
 }
