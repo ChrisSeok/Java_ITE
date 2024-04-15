@@ -1,5 +1,9 @@
 package booksearch.service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import booksearch.dao.BookDao;
 import booksearch.vo.BookVO;
 import javafx.collections.ObservableList;
@@ -8,7 +12,17 @@ import javafx.collections.ObservableList;
 
 public class BookSearchService { //로직처리 객체 -> 로직별로 객체 새로 생성하나?
 	//이 안에는 buisness(기능용) 객체가 존재!
-	
+//static block 
+	static {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver"); //"com.mysql.cj.jdbc.Driver" - MySQL JDBC 드라이버 클래스의 전체 이름
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+		System.out.println("드라이버 로딩 성공");
+		
+	}
 //생성자
 	public BookSearchService() {
 		
@@ -37,16 +51,40 @@ public class BookSearchService { //로직처리 객체 -> 로직별로 객체 �
 	}
 
 //삭제 메서드
+//dao 하나는 sql쿼리 하나만 처리하도록.(여러개의 쿼리 처리하는건 지양하자)
 	public ObservableList<BookVO> deleteBookByTitle(String isbn, String search){ //초기에 검색한 검색어를 인자로 가지고 있어야 삭제 후 결과를 보여줄 수 있음.
 		//책의 isbn으로 삭제
-		BookDao dao = new BookDao();
-		boolean success = dao.delete(isbn); //delete 쿼리 결과가 true이면 select로 이전의 키워드 검색 결과 다시 보여주기
-		//	if (success == true) {
+		String myID = "root";
+		String myPW = "seok99";
+		String myUrl = "jdbc:mysql://localhost:3306/library?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(myUrl, myID, myPW);
+			con.setAutoCommit(false); //transaction 시작!
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//transaction 처리를 하기 위해서는 service 단에서 transavtion이 
+		//설정된 connection 
+		// insert, delete, select 세 작업이 하나의 커넥션을 공유해서 사용하도록 해야한다.
+		BookDao dao = new BookDao(con);
+		
+		//교수님코드 
+		dao.insert(deleteIsbn);
+		int count = dao.delete(deleteIsbn);
+		ObservableList<BookVO> result = dao.select(keyword);
+		con.commit();
+		con.rollback();
+		
+		
+		//내코드
+//		boolean success = dao.delete(isbn); //delete 쿼리 결과가 true이면 select로 이전의 키워드 검색 결과 다시 보여주기
 		
 		//삭제 성공했다면 삭제 후의 결과를 화면에 띄워주자
 		// 위의 select메서드 사용해서.
 		//근데,,,,데이터가 변경되면 ObservableList는 이를 감지하여 UI를 자동으로 업데이트 한다는데 select를 다시 안해줘도 되는걸까나
-		ObservableList<BookVO> result = dao.select(search); //select 쿼리의 결과를 가져온다.
+//		ObservableList<BookVO> result = dao.select(search); //select 쿼리의 결과를 가져온다.
 		return result;
 //	}
 
