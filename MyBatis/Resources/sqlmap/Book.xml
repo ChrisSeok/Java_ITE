@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+	"mybatis-3-mapper.dtd" >
+
+<mapper namespace="example.mybook">  <!-- 어떤 mapper의 어떤 id인지로 구분해서 쓸거에용. namespace는 패키지 따라 지으면 좋다. -->
+
+	<!-- 같은 쿼리문이 있을 수 있으니 id로 구분해서 쓸거에용 -->
+	<!-- ISBN 번호를 인자로 받아야 함 -->
+
+	<select id="selectByISBNHashMap" parameterType="String"
+		resultType="HashMap">
+
+		<!-- parameter 여러개면? -->
+		<!-- 대소문자 등을 꺾쇠로 인식할 수 있으므로 CDATA로 쿼리를 감싸준다 -->
+		
+		<![CDATA[
+		SELECT bisbn, btitle, bprice, bauthor 
+		FROM book 
+		WHERE bisbn = #{bisbn} ]]>       <!-- 코드상에서 bisbn이라는 이름으로 인자를 전달해야 한다. -->
+
+	</select>
+
+
+
+	<select id="selectAllHashMap" resultType="HashMap">
+
+		<!-- parameter 여러개면? -->
+		<!-- 대소문자 등을 꺾쇠로 인식할 수 있으므로 CDATA로 쿼리를 감싸준다 -->
+		
+		<![CDATA[
+		SELECT bisbn, btitle, bprice, bauthor 
+		FROM book 
+		]]>           <!-- 모든 책 다 들고와서 HashMap 형태로 리턴 -->
+
+	</select> <!--얘를 이용하는건 DAO . DAO로 간다 -->
+
+
+
+	<select id="selectByISBNBookVO" parameterType="String"
+		resultType="BookVO">    <!-- 원래는 BookVo의 풀 패키지명을 적어야 하지만 sqlMapConfig에서 alias를 잡아놨기 땜에 클래스명만 씀 -->
+		<!-- 컬럼명과 BookVO의 필드명이 같아야 한다. 다르면 또 조치를 취해줘야함. -->
+		<![CDATA[
+		SELECT bisbn, btitle, bprice, bauthor 
+		FROM book 
+		WHERE bisbn = #{bisbn}
+		]]>
+
+	</select> <!--얘를 이용하는건 DAO . DAO로 간다 -->
+
+	<!-- 맵핑 규칙 : 컬럼명과 BookVO의 필드를 매핑시킨다 -->
+	<resultMap type="BookVO" id="result_1">
+		<result property="bisbn" column="my_isbn" jdbcType="VARCHAR"
+			javaType="String" /> <!-- db 칼럼 타입과 java의 타입이 다를 경우 변환 -->
+		<result property="btitle" column="my_title" />
+		<result property="bprice" column="my_price" />
+		<result property="bauthor" column="my_author" />
+	</resultMap>
+
+	<select id="selectByISBNResultMap" parameterType="String"
+		resultMap="result_1">
+		<!-- 컬럼명과 BookVO의 필드명이 같아야 한다. 다르면 또 조치를 취해줘야함. -->
+		<![CDATA[
+		SELECT  bisbn AS my_isbn, 
+				btitle AS my_title, 
+				bprice AS my_price, 
+				bauthor AS my_author
+		FROM book 
+		WHERE bisbn = #{bisbn}
+		]]>
+	</select>
+
+<!-- update,delete,insert - 영향받은 row의 개수가 리턴된다. -->
+	
+	<update id="titleUpdate" parameterType="BookVO">   <!-- parameter 두개 이상 넘기려면 VO에 담아서 VO를 넘겨야해! -->
+		<![CDATA[
+			UPDATE book
+			SET btitle = #{btitle}
+			WHERE bisbn = #{bisbn}
+		]]>
+	</update>
+
+
+
+
+
+
+</mapper>
