@@ -20,8 +20,6 @@ public class BookVO {
 			this.bauthor = bauthor;
 		}
 		
-
-		
 		
 		
 //getter, setter

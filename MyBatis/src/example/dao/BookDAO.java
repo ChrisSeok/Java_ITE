@@ -81,7 +81,7 @@ public class BookDAO {
 		BookVO result = null;
 		 SqlSession session = sqlSessionFactory.openSession();	
 		 try {
-			result = session.selectOne("example.mybook.selectByISBNResultMap",bisbn); // Book.xml 파일의 namespace.id, 두번째 인자명은 xml의 #{bisbn}얘랑 이름 같아야 함.
+			result = session.update("example.mybook.selectByISBNResultMap",bisbn); // Book.xml 파일의 namespace.id, 두번째 인자명은 xml의 #{bisbn}얘랑 이름 같아야 함.
 		} catch (Exception e) {
 		}finally {
 			session.close();

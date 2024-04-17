@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 	
 	<typeAliases>
 		<!-- VO가 보통 길기때문에 aliasing 한다. -->
-		<typeAlias alias="BookVO" type="example.vo.BookVO" /> <!-- 해당 VO의 레퍼런스를 풀패키지명 대신 짧게 BookVO로 쓸게요 -->
+		<typeAlias alias="BookVO" type="booksearch.vo.BookVO" /> <!-- 해당 VO의 레퍼런스를 풀패키지명 대신 짧게 BookVO로 쓸게요 -->
 	</typeAliases>
 
 

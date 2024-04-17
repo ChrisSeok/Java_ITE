@@ -51,5 +51,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Program Files/Java/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/mybatis-3.5.16.jar"/>
+	<classpathentry kind="src" path="Resources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

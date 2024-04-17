@@ -19,8 +19,8 @@ public class BookSearchView extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
-		Parent root = null; //FXMLLoader가 일반적으로 Parent 클래스 인스턴스를 반환
+		// 화면 초기화
+		Parent root = null; 
 
 		FXMLLoader loader = new FXMLLoader( // fxml 파일을 불러들임
 				getClass().getResource("JavaFXBookSearchTableView.fxml")
