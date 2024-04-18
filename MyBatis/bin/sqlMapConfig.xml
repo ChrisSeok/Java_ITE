@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 
 <configuration>
 	<!-- Driver properties 파일 -->
-	<properties resource="./driver.properties"></properties>
-
+	<!-- 속성 파일로부터 속성을 로드하기 위한 리소스를 지정 -->
+	<properties resource="./driver.properties"></properties>  
 
 
 

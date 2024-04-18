@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Insert title here</title>
+			<!-- jQuery를 이용하려면 library의 CDN을 포함시키면 되요! -->
+			<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+			
+			<!-- jQuery를 사용하는 화면을 제어하기 위한 JavaScript code를 작성해야 해요! -->
+			<!-- 한 파일 내에 다른 언어의 코드가 나오면 관리가 어려워서 src로 따로 빼서 관리할거다-->
+			
+			<script src = "./js/03.jQuery.js">  
+			</script>
+		</head>
+	<body>
+		<div>
+	<h1>취미는 무엇인가요?</h1>
+	<input type ="checkbox"><span>운동 </span> <!-- span은 아무 역할 없고 영역만 잡는 element -->
+	<br>
+	<input type ="checkbox"><span>독서 </span> 
+	<br>
+	<input type ="checkbox"><span>노래 </span>
+	<br>
+		</div>
+
+<!-- 버튼 -->
+		<input type = "button" value= "서버로 전송" onclick="myFunc()"> <!-- 버튼의 동작을 위해 리스너가 필요하다. -->
+	
+		</div>
+	</body>
+</html>
