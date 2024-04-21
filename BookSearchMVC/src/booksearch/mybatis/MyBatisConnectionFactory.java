@@ -8,8 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisConnectionFactory {
 	//sql session을 만들어주는 팩토리 객체를 리턴. 한번만 만들어놓고 주구장창 쓰면 된다
-	// 실제 프로그램(DAO)에서 사용하는 데이터베이스 연결 객체는 
-	// 기존(JDBC)일 떄는 connection객체를 이용했어요!
+	// 실제 프로그램(DAO)에서 사용하는 데이터베이스 연결 객체는 기존(JDBC)에는 Connection객체를 이용했어요!
 	// MyBatis에서는 SqlSession 객체를 이용해요!
 	private static SqlSessionFactory sqlSessionFactory;
 

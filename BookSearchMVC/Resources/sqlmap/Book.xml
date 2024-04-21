@@ -11,7 +11,7 @@
 	<select id="selectLike" parameterType="String"
 		resultType="BookVO">
 
-		<!-- parameter 여러개면? -->
+		
 		<!-- 대소문자 등을 꺾쇠로 인식할 수 있으므로 CDATA로 쿼리를 감싸준다 -->
 		
 		<![CDATA[
@@ -35,7 +35,7 @@
 
 
 <!-- update,delete,insert - 영향받은 row의 개수가 리턴된다. -->
-	
+	<!-- parameter 여러개면 VO 형태로 인자를 받는다. -->	
 	<update id="titleUpdate" parameterType="BookVO">   <!-- parameter 두개 이상 넘기려면 VO에 담아서 VO를 넘겨야해! -->
 		<![CDATA[
 			UPDATE book

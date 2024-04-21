@@ -29,13 +29,16 @@ public class BookDao {
 	public List<BookVO> selectLike(String keyword, SqlSession session) {  //alias를 잡아줬기 때문에 BookVO를 그냥 씀
 		List<BookVO> result = null;
 		 try {
-			result = session.selectList("booksearch.mybook.selectLike",keyword); // Book.xml 파일의 namespace.id, 두번째 인자명은 xml의 #{bisbn}얘랑 이름 같아야 함.
+			 // SqlSession 클래스에서는 CRUD를 위한 다양한 메서드를 제공, selectList는 select 실행 결과 레코드를 list로 바꿔준다. 
+			//SqlSession의 selectList() 메서드를 사용하여 delete 쿼리를 실행하면 오류가 발생합니다. 
+			// 이는 selectList() 메서드가 데이터를 조회하는 용도로 설계되어 있기 때문입니다.
+			 result = session.selectList("booksearch.mybook.selectLike",keyword); // Book.xml 파일의 namespace.id, 두번째 인자명은 xml의 #{keyword}얘랑 이름 같아야 함.
 		} catch (Exception e) {
 			System.out.println(e);
 		}finally {
 			session.close();
 		}
-		 return result; //sqlSessionFactory 리턴해서 줌
+		 return result; //List<BookVO> 형태
 		}
 	
 	

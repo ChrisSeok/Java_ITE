@@ -37,8 +37,9 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 			<transactionManager type="JDBC"></transactionManager>  <!-- transactionManager는 type이 두 개가 있다 : 
 													JDBC(트랜잭션 수동관리)/Managed(Container가 트랜잭션을 관리) -->
 
-				<dataSource type="POOlED">  <!-- ConnectionPool 쓰겠다는 뜻 -->
-					<property name="driver" value="${driver}" />  <!-- key값을 이용해서 driver.properties에서 가져오자 -->
+				<dataSource type="POOLED">  <!-- ConnectionPool 쓰겠다는 뜻 -->
+				<!-- key값을 이용해서 driver.properties에서 가져오자 -->
+					<property name="driver" value="${driver}" />  
 					<property name="url" value="${url}" /> <!--$ 대신 #을 사용할 경우 값을 문자열로 변환해서 가져온다. $는 문자열 변환 없이 값만 달랑 들고온다.-->
 					<property name="username" value="${username}" />
 					<property name="password" value="${password}" />

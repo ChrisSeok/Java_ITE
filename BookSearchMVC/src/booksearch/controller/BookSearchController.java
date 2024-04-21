@@ -72,26 +72,6 @@ public class BookSearchController implements Initializable {
 
 
 
-		//책 선택 (내 코드)
-		//		tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-		//			if (newSelection != null) {
-		//				// 선택된 항목을 String에 저장
-		//				selectedisbn = ((BookVO) newSelection).getBisbn(); //isbn도 String타입 입니다
-		//			}
-		//		});
-
-
-		//선택된 책의 isbn으로 책을 삭제할게요
-		//삭제버튼
-
-		//		deleteBtn.setOnAction(actionEvent -> {
-		//			BookSearchService service = new BookSearchService();
-		//			List<BookVO> afterdelete  = service.deleteBook(selectedisbn);
-		//			//선택한 책 삭제 후 searchterm으로 다시 select해서 DB에서 가져온 결과를 리턴한게 afterdelete에 담김
-		//			tableView.setItems(afterdelete);
-		//		});
-
-
 		deleteBtn.setOnAction(e -> {
 			TableViewSelectionModel<BookVO> selectionModel = tableView.getSelectionModel();
 			BookVO selectedData = selectionModel.getSelectedItem();
@@ -104,7 +84,7 @@ public class BookSearchController implements Initializable {
 		});
 
 
-		// 선택된 책의 isbn으로 제목을 입력값으로 변경할게요
+// 선택된 책의 isbn으로 제목을 입력값으로 변경할게요
 		//update 버튼		
 //		updateBtn.setOnAction(actionEvent -> {
 //
@@ -118,20 +98,28 @@ public class BookSearchController implements Initializable {
 //
 //		});
 		
-        
+ 
+
+// tableView 화면에서 책 제목 더블클릭 해서 변경할 수 있도록!
+		
         tableView.setEditable(true);
 
         
         tableView.setOnMouseClicked(e -> {
+        	
         	TableViewSelectionModel<BookVO> selectionModel = tableView.getSelectionModel();
+        	
         	if (e.getClickCount() == 2 && !selectionModel.isEmpty()) {
+        		
             	BookVO selectedData = selectionModel.getSelectedItem();
                 title.setCellFactory(TextFieldTableCell.forTableColumn());
+                
         		title.setOnEditCommit(event -> {
         		    // 변경된 값 가져오기
         		    String newValue = event.getNewValue();
         		    selectedData.setBtitle(newValue);
         		    System.out.println(selectedData.getBtitle());
+        		    
         		    BookSearchService service = new BookSearchService();
         		    BookVO updateBookVO = new BookVO(selectedData.getBisbn(), selectedData.getBtitle(), selectedData.getBprice(), selectedData.getBauthor());
         		    service.updateBook(updateBookVO);
