@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+	"mybatis-3-mapper.dtd" >
+
+<mapper namespace="member">
+	<select id="insertmemberinfo" parameterType="MemberVO">
+	
+		<![CDATA[ 
+		INSERT INTO userinfo (user_name, user_loginid, user_pw) 
+		VALUES (#{user_name}, #{user_loginid}, #{user_pw})  
+		]]> 
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</select>
+</mapper>
+
+
