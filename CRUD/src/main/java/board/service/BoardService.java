@@ -1,0 +1,70 @@
+package board.service;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import board.dao.BoardDao;
+import board.vo.BoardVO;
+import mybatis.MyBatisConnection;
+
+public class BoardService {
+
+
+	//게시글 리스트 다 가져오는 Service
+	public List<BoardVO> BringAllPost() {
+		// DB 처리는 Dao한테 위임, SqlSession객체를 Dao에게 injection해서 사용.
+
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+
+		List<BoardVO> result = null;
+
+		//Dao를 이용해서 DB처리를 하면 되용.
+		try {
+
+			BoardDao dao = new BoardDao(session);
+			result = dao.select();
+
+			//				System.out.println("여기는 Service, dao result:" + result); 
+
+
+
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+		return result;
+	}
+
+	//특정 게시글 하나 가져오는 Service
+	public BoardVO ShowPost(int post_id) {
+
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+		BoardVO result = null;
+
+		try {
+			BoardDao dao = new BoardDao(session);
+			result = dao.selectOnePost(post_id);
+
+
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+
+		return result;
+	}
+
+}
+

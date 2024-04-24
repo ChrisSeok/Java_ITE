@@ -15,14 +15,17 @@
         <div class="row">
             <div class="col-md-6">
                 <h2>Login</h2>
-                <form>
+                <form action="http://localhost:8080/crud/loginservlet" method = "post">
                     <div class="form-group">
                         <label for="loginUsername">Username</label>
-                        <input type="text" class="form-control" id="loginUsername" placeholder="Enter username">
+                        
+                        <input type="text" name="loginUserid" class="form-control" id="loginUsername" placeholder="Enter username">
                     </div>
                     <div class="form-group">
+                    
                         <label for="loginPassword">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter password">
+     <!-- 나중에 type을 password로 바꿔주세용~ 마스킹 되게 -->                   
+                        <input type="text" name="loginPassword" class="form-control" id="loginPassword" placeholder="Enter password">
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
