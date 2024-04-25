@@ -49,6 +49,17 @@
 	</update>
 
 
+	<insert id="insertpost" parameterType="BoardVO">
+	
+		<![CDATA[ 
+		 INSERT INTO posts (user_id, title, content) 
+		 VALUES (${user_id}, #{title},#{content})
+		]]>
+
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</insert>
+
+
 </mapper>
 
 

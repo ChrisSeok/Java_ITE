@@ -113,7 +113,28 @@ public class BoardService {
 		return result;
 	}
 	
-	
+	public int InsertPost(BoardVO postvo) {
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+		
+		int result = 0;
+
+		try {
+			BoardDao dao = new BoardDao(session);
+			result = dao.insertpost(postvo);
+
+			session.commit();
+			
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+		return result;
+	}
 	
 	
 

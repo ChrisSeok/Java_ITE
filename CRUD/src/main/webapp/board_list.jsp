@@ -43,7 +43,11 @@
 				
 			</tbody>
 		</table>
+		
+		<!-- 글쓰기 버튼 -->
+		<a href="write_post.jsp" class="btn btn-primary">글쓰기</a>
 	</div>
+		
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
