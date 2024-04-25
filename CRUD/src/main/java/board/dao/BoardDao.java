@@ -35,6 +35,20 @@ public class BoardDao {
 		return result;
 	
 	}
+
+	public int deletpost(int post_id) {
+		int row = -1;
+		row = session.delete("board.deletepost",post_id);
+		
+		return row;
+	}
+
+	public int updatepost(BoardVO postvo) {
+		int result = 0;
+		result = session.update("board.updatepost",postvo);
+		
+		return result;
+	}
 	
 	
 	

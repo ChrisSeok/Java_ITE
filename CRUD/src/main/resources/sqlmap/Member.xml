@@ -9,23 +9,36 @@
 		<![CDATA[ 
 		INSERT INTO userinfo (user_name, user_loginid, user_pw) 
 		VALUES (#{user_name}, #{user_loginid}, #{user_pw})  
-		]]> 
+		]]>
 		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
 	</select>
-	
-	
-	<select id="selectmemberinfo" parameterType="MemberVO" resultType="MemberVO">
+
+
+	<select id="selectmemberinfo" parameterType="MemberVO"
+		resultType="MemberVO">
 	
 		<![CDATA[ 
 		select user_id, user_loginid, user_name, user_pw
 		from userinfo 
 		where user_loginid = ${user_loginid} and user_pw = ${user_pw} ;
-		]]> 
-		
+		]]>
+
 		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
 	</select>
+
+
+	<select id="selectwithid" parameterType="Integer" resultType="MemberVO">
 	
-	
+		<![CDATA[ 
+		select user_id, user_loginid, user_name, user_pw
+		from userinfo 
+		where user_id = ${user_id};
+		]]>
+
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</select>
+
+
 </mapper>
 
 

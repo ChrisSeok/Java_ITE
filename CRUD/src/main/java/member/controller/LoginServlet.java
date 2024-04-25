@@ -82,6 +82,34 @@ public class LoginServlet extends HttpServlet {
 		    dispatcher.forward(request, response);
 		    
 		}
+		else {
+		    response.setContentType("text/html;charset=UTF-8");
+		    
+		    PrintWriter out = response.getWriter();
+		    
+		    out.println("<html>");
+		    out.println("<head><title>Popup Example</title></head>");
+		    out.println("<body>");
+		    out.println("<script type=\"text/javascript\">");
+		    out.println("alert(\"로그인 실패. 너 누구야???\");"); // 팝업 메시지를 출력하는 JavaScript 코드
+		    out.println("window.location.href = 'index.jsp';");
+		    out.println("</script>");
+		    out.println("</body>");
+		    out.println("</html>");
+		  
+		    out.close();
+		    
+		    //다시 로그인 창으로 보낼게요
+		    // 팝업 메시지를 출력한 후에 response.sendRedirect("index.jsp")를 호출하더라도, 
+		    // 클라이언트에서는 이미 팝업 메시지가 표시된 후에 새로운 페이지로 이동하게 됩니다. 
+		    // 팝업 메시지가 표시되는 시점에서는 이미 HTTP 응답이 완료되었기 때문에, 새로운 페이지로의 리다이렉션은 
+		    // 클라이언트에게 반영되지 않습니다.
+		    // 이런 경우에는 클라이언트 측에서 팝업 메시지를 확인한 후에 새로운 페이지로 이동하는 로직을 JavaScript로 처리해야 합니다. 
+		    // 예를 들어, 팝업 메시지를 확인한 후에 window.location.href를 사용하여 새로운 페이지로 이동할 수 있습니다.
+		    // 위에 봐라!!
+		    
+//		    response.sendRedirect("index.jsp"); //이르케 하면 안된단 소리
+		}
 
 	
 	

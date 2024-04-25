@@ -61,7 +61,7 @@ public class MemberService {
 				result = dao.select(vo);
 //				System.out.println("여기는 Service try: " + vo + "result:" + result); 
 				
-				session.commit();
+//				session.commit();
 
 			} catch (Exception e) {
 				System.out.println("Service에서 오류 찍어용:"+ e);
@@ -72,6 +72,34 @@ public class MemberService {
 			return result;
 		}
 		
+		
+		
+		
+		public MemberVO getUserInfo(int user_id) {
+			// DB 처리는 Dao한테 위임, SqlSession객체를 Dao에게 injection해서 사용.
+
+			SqlSessionFactory factory = 
+					MyBatisConnection.getSqlSessionFactory();
+			
+			SqlSession session = factory.openSession();
+		
+			MemberVO result = null;
+
+			//Dao를 이용해서 DB처리를 하면 되용.
+			try {
+				
+				MemberDao dao = new MemberDao(session);
+				result = dao.select_with_userid(user_id);
+				
+
+			} catch (Exception e) {
+				System.out.println("Service에서 오류 찍어용:"+ e);
+			}finally {
+				session.close();
+			}
+//			System.out.println("service입니다:"+result);
+			return result;
+		}
 		
 		
 	}

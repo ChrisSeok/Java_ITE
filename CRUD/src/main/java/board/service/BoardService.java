@@ -65,6 +65,57 @@ public class BoardService {
 
 		return result;
 	}
+	
+	// 게시글 삭제
+	public int deletePost(int post_id) {
+
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+		int result = -1;
+
+		try {
+			BoardDao dao = new BoardDao(session);
+			result = dao.deletpost(post_id);
+
+			session.commit();
+			
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+		return result;
+	}
+
+	public int EditPost(BoardVO postvo) {
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+		
+		int result = 0;
+
+		try {
+			BoardDao dao = new BoardDao(session);
+			result = dao.updatepost(postvo);
+
+			session.commit();
+			
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+		return result;
+	}
+	
+	
+	
+	
 
 }
 

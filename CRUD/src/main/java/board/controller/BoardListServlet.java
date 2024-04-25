@@ -33,8 +33,28 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		BoardService service = new BoardService();
+		List<BoardVO> resultlist = (List<BoardVO>) service.BringAllPost();
+		
+		
+		if(resultlist!=null) {
+//			System.out.println("게시글: " + resultlist);
+			
+//			//이제 게시판 jsp로 넘어가게 합쉬다
+			HttpSession session = request.getSession(true); //현재 요청과 관련된 세션을 반환한다. 만약 없다면, 새로운 세션을 생성한다.
+		    session.setAttribute("PostList", resultlist); //user_id 값을 세션으로 넘길게요
+//		
+//		    
+//		    RequestDispatcher dispatcher = request.getRequestDispatcher("board_list.jsp");
+//		    dispatcher.forward(request, response);
+		    response.sendRedirect("board_list.jsp");
+		    
+		}
+		else {
+			//게시글 없을 때 
+			//게시글 없이 화면 표시
+		}
 	}
 
 	
@@ -65,8 +85,10 @@ public class BoardListServlet extends HttpServlet {
 		    session.setAttribute("PostList", resultlist); //user_id 값을 세션으로 넘길게요
 //		
 //		    
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("board_list.jsp");
-		    dispatcher.forward(request, response);
+//		    RequestDispatcher dispatcher = request.getRequestDispatcher("board_list.jsp");
+//		    dispatcher.forward(request, response);
+		    response.sendRedirect("board_list.jsp");
+
 		    
 		}
 		else {
