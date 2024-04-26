@@ -42,6 +42,31 @@ public class BoardService {
 		return result;
 	}
 
+	
+	public List<BoardVO> BringMyPost(int user_id) {
+
+		SqlSessionFactory factory = 
+				MyBatisConnection.getSqlSessionFactory();
+
+		SqlSession session = factory.openSession();
+		List<BoardVO> result = null;
+
+		try {
+			BoardDao dao = new BoardDao(session);
+			result = dao.selectMyPost(user_id);
+
+
+		} catch (Exception e) {
+			System.out.println("Board Service에서 오류 찍어용:"+ e);
+		}finally {
+			session.close();
+		}
+
+
+		return result;
+	}
+	
+	
 	//특정 게시글 하나 가져오는 Service
 	public BoardVO ShowPost(int post_id) {
 
@@ -90,6 +115,7 @@ public class BoardService {
 		return result;
 	}
 
+	//게시글 수정
 	public int EditPost(BoardVO postvo) {
 		SqlSessionFactory factory = 
 				MyBatisConnection.getSqlSessionFactory();
@@ -112,6 +138,9 @@ public class BoardService {
 
 		return result;
 	}
+	
+	
+	
 	
 	public int InsertPost(BoardVO postvo) {
 		SqlSessionFactory factory = 

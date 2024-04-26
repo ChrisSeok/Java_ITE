@@ -59,7 +59,15 @@
 		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
 	</insert>
 
-
+	<select id="selectmypost" parameterType="Integer" resultType="BoardVO">
+	
+		<![CDATA[ 
+		select post_id, user_id, title, content, created_at
+		from posts 
+		where user_id = ${user_id}
+		]]>
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</select>
 </mapper>
 
 

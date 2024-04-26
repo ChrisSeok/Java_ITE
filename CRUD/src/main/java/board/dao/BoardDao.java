@@ -53,11 +53,17 @@ public class BoardDao {
 	
 	public int insertpost(BoardVO postvo) {
 		int result = 0;
-		int result = session.insert("board.insertpost", postvo);
+		result = session.insert("board.insertpost", postvo);
 		
 		return result;
 	}
+	public List<BoardVO> selectMyPost(int userid) throws Exception{
+		List<BoardVO> resultlist = null;
+		resultlist = session.selectList("board.selectmypost",userid); 
+		
+		return resultlist;
 	
+	}
 	
 	
 }

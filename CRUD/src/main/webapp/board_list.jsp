@@ -8,11 +8,26 @@
 <title>게시글 목록</title>
 <!-- Bootstrap CSS -->
 <link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+
+.mypage-btn {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+</style>
+
 </head>
 <body>
 	<div class="container">
+	<a href="mypageservlet" class="btn mypage-btn">MyPage</a>
+	
+	
 		<h2 class="mt-5 mb-4">게시글 목록</h2>
 		<table class="table table-striped">
 			<thead>

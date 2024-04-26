@@ -49,7 +49,15 @@ public class MemberDao {
 		return result2;
 	
 	}
-	
+
+	public int delete(int user_id) {
+		
+		int result = session.delete("member.deletememberinfo",user_id);  //Member.xml에 있는 쿼리 id
+
+		return result;
+
+	}
+
 	
 	
 }

@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(result!=null) {
 			System.out.println("로그인 성공~!");
-			System.out.println("멤버 정보: " + result);
+//			System.out.println("멤버 정보: " + result);
 			
 			//이제 게시판 jsp로 넘어가게 합쉬다
 			HttpSession session = request.getSession(true); //현재 요청과 관련된 세션을 반환한다. 만약 없다면, 새로운 세션을 생성한다.

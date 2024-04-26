@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+	"mybatis-3-mapper.dtd" >
+
+<mapper namespace="comment">
+
+	<select id="selectallcomment" parameterType="Integer" resultType="CommentVO">
+	
+		<![CDATA[ 
+		select *
+		from comments
+		where post_id = ${post_id}
+		]]>
+
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</select>
+
+	<delete id="deletecomment"  parameterType="Integer">
+	
+		<![CDATA[ 
+		delete
+		from comments
+		where comment_id = ${comment_id}
+		]]>
+
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</delete>
+	
+	
+		<delete id="editcomment"  parameterType="CommentVO">
+	
+		<![CDATA[ 
+		UPDATE comments SET comment_text = #{comment_text} WHERE comment_id = ${comment_id}
+		]]>
+
+		<!-- 변수는 db의 칼럼명이랑 일치시키자 -->
+	</delete>
+
+</mapper>
+
+

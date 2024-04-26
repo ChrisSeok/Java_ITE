@@ -39,7 +39,7 @@ public class PostDeleteServlet extends HttpServlet {
 		int post_id = Integer.parseInt(request.getParameter("postid"));
 
 		//본인이 쓴 글만 삭제 가능하도록 세션 정보를 확인한다
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 	    String session_userid = (String) session.getAttribute("UserID");
 	    int s_userid = Integer.parseInt(session_userid);
 

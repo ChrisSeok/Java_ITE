@@ -37,7 +37,7 @@ public class EditPostServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int post_id = Integer.parseInt(request.getParameter("postid"));
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 	    String session_userid = (String) session.getAttribute("UserID");
 	    int s_userid = Integer.parseInt(session_userid);
 
