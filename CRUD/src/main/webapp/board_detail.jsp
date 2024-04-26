@@ -212,8 +212,10 @@ function a(){
                     method: 'POST',
                     data: { commentid: CommentId },
                     success: function(response) {
-                        // 삭제가 성공하면 페이지를 새로고침하여 변경사항을 반영
+                        // 삭제가 성공하면 (삭제의 경우 수정처럼 데이터를 반환할 필요 없으니) 문자열 리턴해서 성공여부 확인 후 
                         location.reload();// 이렇게 하면 페이지 전체 리로딩된다. 그 부분만 다시 로딩되게 짜야한다.
+                        
+                        // 페이지 전체가 아닌 html의 특정 부분만 고치는 것을 jQuery를 사용해서 할 수 있다!!
                      },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
