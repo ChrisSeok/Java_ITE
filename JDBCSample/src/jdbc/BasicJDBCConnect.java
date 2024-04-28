@@ -12,7 +12,7 @@ public class BasicJDBCConnect {
 		
 		try {
 			//1. JDBC Driver를 프로그램 안으로 로딩해야 해용
-			//드라이버 로딩...그냥 이렇게 합니다
+			//드라이버 로딩
 			Class.forName("com.mysql.cj.jdbc.Driver");   // JDBC 드라이버 로딩. //눕는 글씨의 함수는 static함수이다.
 			System.out.println("드라이버 로딩 성공성공!");
 			
