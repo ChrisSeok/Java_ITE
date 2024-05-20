@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	 
+	<!-- 스프링 컨테이너에는 tv라는 이름의 빈이 만들어져있다.   -->
+	<!-- new (net.developia.spring01.di101.SamsungTV) 와 동일. -->
+	
+	<!-- HarmanSpeaker 빈 생성-->
+ 	<bean id = "speaker1"
+ 		class = "net.developia.spring01.di101.HarmanSpeaker"/>
+ 		
+ 	<!-- SamsungTV 빈 생성-->	
+	<bean id="tv"
+ 		class="net.developia.spring01.di101.SamsungTV">
+ 		<!-- setter인 setSpeaker에 HarmanSpeaker 빈인 speaker1 주입-->
+ 		<property name= "speaker2" ref="speaker1"/>	
+ 	</bean>
+
+ 		
+	
+  	<!-- speaker를 tv에 주입해볼게요 -->
+ 		
+</beans>

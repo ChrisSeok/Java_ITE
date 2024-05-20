@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="net.developia.spring01.di201" />
+ 		
+</beans>
+<!-- Bean을 annotation 붙여서 처리 -->
+<!-- @Component 가 붙으면 Bean으로 인식. 
+이걸 상속받은 @Controller, @Service, @Repository (Component랑 기능똑같다)
+@RestController(뷰를 거치지 않고 바로 데이터를 json으로 리턴)-->
