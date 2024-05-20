@@ -6,5 +6,5 @@ import lombok.Data;
 public class Book {
 	private int isbn;
 	private String author;
-	private int price;
+	private int price; 
 }
