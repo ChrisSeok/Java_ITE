@@ -33,7 +33,13 @@ public class JDBCTest {
 				"SCOTT", 
 				"TIGER"
 				)){
-			log.info(con);
+			//log4j의 모드는 이렇게 5가지가 있다: 
+//			log.debug(con);
+//			log.info(con);
+//			log.warn(con);
+			log.error(con);
+//			log.fatal(con);
+			
 		}catch (Exception e) {
 			fail(e.getMessage());
 		}
